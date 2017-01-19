@@ -1,0 +1,159 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.xjp.test</groupId>
+  <artifactId>springboot-CRUD</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>springboot-CRUD</name>
+  <url>http://maven.apache.org</url>
+  
+  
+   <!--
+	    spring boot 父节点依赖,引入这个之后相关的引入就不需要添加version配置，
+	    spring boot会自动选择最合适的版本进行添加。
+    -->  
+  <parent>  
+    <groupId>org.springframework.boot</groupId>  
+    <artifactId>spring-boot-starter-parent</artifactId>  
+    <version>1.2.5.RELEASE</version><!-- 尽量用最新版，1.2.5可能不识别后面功能 -->  
+    <relativePath/>  
+  </parent>  
+  
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+     <!-- 这里一定要配置上java的版本，默认是1.6还是1.7？ --> 
+    <java.version>1.7</java.version>  
+  </properties>
+
+
+
+  <dependencies>
+  	
+ 	<!-- 有时间总结这里的所有依赖
+   	如果没有这个，注解和其他包都会找不到 -->
+   	
+   	
+   		<!-- 
+  			web支持: 1、web mvc; 2、restful; 3、jackjson支持; 4、aop ........ 
+  		 -->
+	  <dependency>  
+	     <groupId>org.springframework.boot</groupId>  
+	     <artifactId>spring-boot-starter-web</artifactId>  
+	     <!-- 上面有parent，所以不不要指定版本号。 -->
+	   </dependency>  
+	   
+	   <!-- 可能是实体化数据库用的 JPA注解持久化类很方便-->
+	   <dependency>  
+		   <groupId>org.springframework.boot</groupId>  
+		   <artifactId>spring-boot-starter-data-jpa</artifactId> 
+		   <!-- 有了JPA就不需要引入JDBC依赖包了 --> 
+		</dependency>  
+		
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+    
+	  <!-- mysql -->  
+	  <dependency>  
+	    <groupId>mysql</groupId>  
+	    <artifactId>mysql-connector-java</artifactId>  
+	  </dependency>  
+	  
+	  <!-- 添加fastjson 依赖包. -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.15</version>
+		</dependency>
+	  
+	  <dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		
+		<!-- 添加thymeleaf的依赖. -->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		
+		
+		<!-- freemarker的依赖配置信息 -->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>
+		
+	  
+	  <!-- 使用get set 注解。 先不使用，配合其他操作方式可能会出错，比如CRUD的查询 -->
+	  <dependency>
+	    <groupId>org.projectlombok</groupId>
+	    <artifactId>lombok</artifactId>
+	    <version>0.11.4</version>
+	  </dependency>
+
+	  
+	  
+  </dependencies>
+
+
+  <build>  
+  
+  
+   <!-- 资源加载 ，注意该配置的位置。-->
+  	<resources>
+  	<!--  如果是按照约定写的目录结构，那么这里就不需要进行引入资源了。
+			 <resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/**</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/webapp</directory>
+				<targetPath>META-INF/resources</targetPath>
+				<includes>
+					<include>**/**</include>
+				</includes>
+			</resource> -->
+
+		</resources>
+		
+		
+    <plugins>  
+    
+     <!--如果是通过parent方式继承spring-boot-starter-parent则不用此插件
+     	   添加插件可以进行命令的操作-->  
+      <!--  <plugin>  
+        <groupId>org.springframework.boot</groupId>  
+        <artifactId>spring-boot-maven-plugin</artifactId>  
+      </plugin>  -->
+      
+      
+    </plugins>  
+  </build>  
+  
+  
+</project>
