@@ -78,6 +78,7 @@ public class XController {
 	
 	/**
 	 * 更新单个商品信息
+	 * 改进：可以用对象名.的形式进行参数的封装
 	 */
 	@RequestMapping("/xupdate")
 	public ModelAndView xupdate(String goodName, Double
